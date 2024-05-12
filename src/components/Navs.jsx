@@ -4,11 +4,10 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Image from "react-bootstrap/Image";
 import logo from "../img/bt-logo.jpg";
-import { useContext } from "react";
-import { LoginContext } from "../context/LoginProvider";
+import { useLoginContext } from "../context/LoginProvider";
 
 function Navs() {
-  const { user, setUser } = useContext(LoginContext);
+  const { user, setUser } = useLoginContext()
 
   return (
     <Navbar expand="md">
@@ -30,7 +29,7 @@ function Navs() {
             <Link className="nav-link" to="/people">
               People
             </Link>
-            {user.email && user.password ? (
+            {user?.email && user?.password ? (
               <Link className="nav-link" to="/login" onClick={() => setUser({email:"", password:""})}>
                 Logout
               </Link>

@@ -2,12 +2,12 @@ import { useContext } from "react";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { LoginContext } from "../context/LoginProvider";
+import { useLoginContext } from "../context/LoginProvider";
 import {useNavigate} from "react-router-dom"
 
 const Login = () => {
   // const [user, setUser] = useState({ email: "", password: "" });
-const {user,setUser} =useContext(LoginContext)
+const {user,setUser} = useLoginContext()
 
 
 const navigate = useNavigate()

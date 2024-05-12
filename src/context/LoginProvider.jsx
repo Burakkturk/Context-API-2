@@ -1,24 +1,22 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useContext } from "react";
 
+const LoginContext = createContext();
 
-export const LoginContext = createContext()
+const LoginProvider = ({ children }) => {
+  const [user, setUser] = useState({ email: "", password: "" });
 
-
-
-
-
-const LoginProvider = ({children}) => {
-    const [user, setUser] = useState({ email: "", password: "" });
-    
-    const values = {
-        user,
-        setUser,
-    }
-
+  const values = {
+    user,
+    setUser,
+  };
 
   return (
     <LoginContext.Provider value={values}>{children}</LoginContext.Provider>
-  )
-}
+  );
+};
 
-export default LoginProvider
+export const useLoginContext = () => {
+  return useContext(LoginContext);
+};
+
+export default LoginProvider;
